@@ -92,7 +92,17 @@ const Todo = () => {
   return (
     <>
       {Loading === true ? (
-        <div className="display-4 m-2">Loading...</div>
+        <div
+        className="display-1 spinner-border"
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        Loading...{" "}
+      </div>
       ) : (
         <>
           <ul>
