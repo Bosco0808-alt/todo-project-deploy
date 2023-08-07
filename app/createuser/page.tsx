@@ -33,6 +33,7 @@ const CreateUser = () => {
     e.preventDefault();
     setDisabled(true)
     if (!username || !password) {
+      setDisabled(false)
       swal.fire({ text: "Username or password not provided" });
       return;
     }
@@ -43,6 +44,7 @@ const CreateUser = () => {
     });
     const { status, hash } = await res.json();
     if (!status) {
+      setDisabled(false)
       swal.fire({ text: "User with the same name already exists" });
       return;
     }

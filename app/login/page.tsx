@@ -22,6 +22,7 @@ const Login = () => {
     e.preventDefault();
     setDisabled(true)
     if (!username || !password) {
+      setDisabled(false)
       swal.fire({ text: "username and password required!" });
       return;
     }
@@ -36,6 +37,7 @@ const Login = () => {
     const { status, hash }: { status: boolean; hash: string } =
       await res.json();
     if (!status) {
+      setDisabled(false)
       swal.fire({ text: "Username or password incorrect!" });
       return;
     }
