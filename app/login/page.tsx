@@ -83,7 +83,7 @@ const Login = () => {
       </div>
       <button type="submit" className="btn btn-primary m-2" disabled={disabled}>
         Login
-        {disabled ? <div className="spinner-border spinner-border-sm text-white m-2 form-control-sm" role="status"></div> : ''}
+        {disabled ? <div className="spinner-border spinner-border-sm text-white m-2" role="status"></div> : ''}
       </button>
       <br />
       <br />
