@@ -83,7 +83,7 @@ const Login = () => {
       </div>
       <button type="submit" className="btn btn-primary m-2" disabled={disabled}>
         Login
-        {disabled ? <div className="spinner-border spinner-border-sm text-white m-2" role="status"></div> : ''}
+        {disabled ? <div className="position-absolute top-50 start-50 translate-middle spinner-border spinner-border-sm m-2 text-white" role="status"></div> : ''}
       </button>
       <br />
       <br />
