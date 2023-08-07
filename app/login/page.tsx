@@ -62,6 +62,7 @@ const Login = () => {
           value={username}
           autoComplete="username"
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
         <label htmlFor="password" className="m-2">
           Password
@@ -73,6 +74,7 @@ const Login = () => {
           value={password}
           autoComplete="current-password"
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
       </div>
       <button type="submit" className="btn btn-primary m-2">
