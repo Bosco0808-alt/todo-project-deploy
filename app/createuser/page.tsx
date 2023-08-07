@@ -93,6 +93,7 @@ const CreateUser = () => {
       </div>
       <button type="submit" className="btn btn-primary m-2" disabled={disabled}>
         Create User
+        {disabled ? <div className="spinner-border text-white" role="status"></div> : ''}
       </button>
       <br />
       <br />
