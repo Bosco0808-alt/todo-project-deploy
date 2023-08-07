@@ -101,7 +101,6 @@ const Todo = () => {
           transform: "translate(-50%, -50%)",
         }}
       >
-        Loading...{" "}
       </div>
       ) : (
         <>
