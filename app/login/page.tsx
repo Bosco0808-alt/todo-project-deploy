@@ -8,6 +8,7 @@ import withReactContent from "sweetalert2-react-content";
 import React from "react";
 
 const Login = () => {
+  const [disabled, setDisabled] = useState(false)
   const swal = withReactContent(Swal);
   useEffect(() => {
     if (cookie.get("username") && cookie.get("password")) {
@@ -19,6 +20,7 @@ const Login = () => {
   const router = useRouter();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setDisabled(true)
     if (!username || !password) {
       swal.fire({ text: "username and password required!" });
       return;
@@ -77,7 +79,7 @@ const Login = () => {
           required
         />
       </div>
-      <button type="submit" className="btn btn-primary m-2">
+      <button type="submit" className="btn btn-primary m-2" disabled={disabled}>
         Login
       </button>
       <br />

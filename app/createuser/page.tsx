@@ -13,6 +13,7 @@ interface ReqBody {
 }
 
 const CreateUser = () => {
+  const [disabled, setDisabled] = useState(false)
   const swal = withReactContent(Swal);
   useEffect(() => {
     if (cookie.get("username") && cookie.get("password")) {
@@ -30,6 +31,7 @@ const CreateUser = () => {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setDisabled(true)
     if (!username || !password) {
       swal.fire({ text: "Username or password not provided" });
       return;
@@ -87,7 +89,7 @@ const CreateUser = () => {
           required
         />
       </div>
-      <button type="submit" className="btn btn-primary m-2">
+      <button type="submit" className="btn btn-primary m-2" disabled={disabled}>
         Create User
       </button>
       <br />
