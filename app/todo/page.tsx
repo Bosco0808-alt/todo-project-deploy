@@ -92,10 +92,7 @@ const Todo = () => {
   return (
     <>
       {Loading === true ? (
-        <div
-          className="display-1 spinner-border d-flex align-items-center justify-content-center"
-        >
-        </div>
+        <div className="display-1">Loading...</div>
       ) : (
         <>
           <ul>
