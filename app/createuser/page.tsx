@@ -13,7 +13,7 @@ interface ReqBody {
 }
 
 const CreateUser = () => {
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false);
   const swal = withReactContent(Swal);
   useEffect(() => {
     if (cookie.get("username") && cookie.get("password")) {
@@ -31,9 +31,9 @@ const CreateUser = () => {
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setDisabled(true)
+    setDisabled(true);
     if (!username || !password) {
-      setDisabled(false)
+      setDisabled(false);
       swal.fire({ text: "Username or password not provided" });
       return;
     }
@@ -44,7 +44,7 @@ const CreateUser = () => {
     });
     const { status, hash } = await res.json();
     if (!status) {
-      setDisabled(false)
+      setDisabled(false);
       swal.fire({ text: "User with the same name already exists" });
       return;
     }
@@ -92,8 +92,17 @@ const CreateUser = () => {
         />
       </div>
       <button type="submit" className="btn btn-primary m-2" disabled={disabled}>
+        {disabled ? (
+          <>
+            <span
+              className="spinner-border spinner-border-sm text-white"
+              role="status"
+            ></span>{" "}
+          </>
+        ) : (
+          ""
+        )}
         Create User
-        {disabled ? <div className="spinner-border spinner-border-sm text-white m-2" role="status"></div> : ''}
       </button>
       <br />
       <br />

@@ -8,7 +8,7 @@ import withReactContent from "sweetalert2-react-content";
 import React from "react";
 
 const Login = () => {
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false);
   const swal = withReactContent(Swal);
   useEffect(() => {
     if (cookie.get("username") && cookie.get("password")) {
@@ -20,9 +20,9 @@ const Login = () => {
   const router = useRouter();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setDisabled(true)
+    setDisabled(true);
     if (!username || !password) {
-      setDisabled(false)
+      setDisabled(false);
       swal.fire({ text: "username and password required!" });
       return;
     }
@@ -37,7 +37,7 @@ const Login = () => {
     const { status, hash }: { status: boolean; hash: string } =
       await res.json();
     if (!status) {
-      setDisabled(false)
+      setDisabled(false);
       swal.fire({ text: "Username or password incorrect!" });
       return;
     }
@@ -82,8 +82,17 @@ const Login = () => {
         />
       </div>
       <button type="submit" className="btn btn-primary m-2" disabled={disabled}>
+        {disabled ? (
+          <>
+            <span
+              className="spinner-border spinner-border-sm text-white"
+              role="status"
+            ></span>{" "}
+          </>
+        ) : (
+          ""
+        )}
         Login
-        {disabled ? <div className="spinner-border spinner-border-sm text-white m-2" role="status"></div> : ''}
       </button>
       <br />
       <br />
