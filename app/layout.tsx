@@ -1,7 +1,6 @@
 import Navbar from "../components/Navbar";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import dynamic from "next/dynamic";
 import { cookies } from "next/headers";
 import Footer from "../components/Footer";
 import React from "react";
