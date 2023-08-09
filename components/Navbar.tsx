@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import { FC } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import React from "react";
-import styles from "@/components/Navbar.module.css";
 interface NavbarProps {
   loginStatus: boolean;
 }
@@ -22,30 +20,35 @@ const Navbar: FC<NavbarProps> = ({ loginStatus }: NavbarProps) => {
       <Link href={"/createuser"} className="nav-item nav-link m-2">
         Create User
       </Link>
-      <button
-        onClick={async () => {
-          if (cookie.get("username") || cookie.get("password")) {
-            const result = await swal.fire({
-              title: "Are you sure you want to logout?",
-              icon: "question",
-              showCancelButton: true,
-              confirmButtonText: "Logout",
-              cancelButtonText: "Cancel",
-            });
+      <div className="nav-item nav-link m-2">
+        <span style={{ paddingRight: 50, pointerEvents: "none" }}>
+          {cookie.get("username") ? cookie.get("username") : ""}
+        </span>
+        <button
+          onClick={async () => {
+            if (cookie.get("username") || cookie.get("password")) {
+              const result = await swal.fire({
+                title: "Are you sure you want to logout?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Logout",
+                cancelButtonText: "Cancel",
+              });
 
-            if (result.isConfirmed) {
-              cookie.remove("username");
-              cookie.remove("password");
-              router.push("/");
+              if (result.isConfirmed) {
+                cookie.remove("username");
+                cookie.remove("password");
+                router.push("/");
+              }
+            } else {
+              router.push("/login");
             }
-          } else {
-            router.push("/login");
-          }
-        }}
-        className="nav-item nav-link m-2"
-      >
-        {loginStatus ? "logout" : "login"}
-      </button>
+          }}
+          className="btn btn-primary"
+        >
+          <span>{loginStatus ? "logout" : "login"}</span>
+        </button>
+      </div>
     </nav>
   );
 };

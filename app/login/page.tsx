@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import cookie from "js-cookie";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import React from "react";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(false);
